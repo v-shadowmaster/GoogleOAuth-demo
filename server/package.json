@@ -1,17 +1,21 @@
 {
-  "name": "backend",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "win-top.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.18.1",
+  "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "@prisma/client": "^7.1.0",
+    "axios": "^1.13.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "prisma": "^7.1.0"
   }
 }
