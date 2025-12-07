@@ -1,18 +1,26 @@
-import { useState } from 'react'
-
-import { Button } from './components/pill-shaped-button'
+import React, { useContext } from 'react';
+import { AuthContext } from './AuthContext';
+import LoginButton from './LoginButton';
+import OAuth2RedirectHandler from './OAuth2RedirectHandler';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { user, logout } = useContext(AuthContext);
+
+  if (window.location.pathname === '/oauth2/redirect') {
+    return <OAuth2RedirectHandler />;
+  }
 
   return (
-    <div className=" flex justify-center items-center min-h-screen">
-      <Button className=' max-w-lg' variant="secondary" onClick={() => { }}>
-        <img src="/google.svg" alt="Google" className="w-5 h-5" />
-        Continue with Google
-      </Button>
+    <div>
+      {user ? (
+        <div>
+          <p>Welcome, {user.name}!</p>
+          <button onClick={logout}>Logout</button>
+        </div>
+      ) : (
+        <LoginButton />
+      )}
     </div>
-  )
+  );
 }
-
-export default App
+export default App;
